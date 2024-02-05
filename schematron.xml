@@ -22,6 +22,7 @@
     <active pattern="bibliography-automated" />
     <active pattern="ptrgrp-automated" />
     <active pattern="nested-list-automated" />
+    <active pattern="decapitation-automated" />
   </phase>
   <phase id="manual">
     <active pattern="descgrp-manual" />
@@ -166,6 +167,12 @@
       </assert>
     </rule>
 
+    <!-- start here -->
+    <rule context="//*:titleproper" diagnostics="kheel-titleproper-date-1">
+      <assert test="not(.//date)">
+        'titleproper' element must not contain 'date' element.
+      </assert>
+    </rule>
   </pattern>
 
 
@@ -375,6 +382,15 @@
     </rule>
   </pattern>
 
+  <pattern id="decapitation-automated">
+    <rule context="//*:head">
+      <!-- 'heads anywhere' -->
+      <assert test="not(.)" diagnostics="decap-1">
+        'head' elements ought not to exist.
+      </assert>
+    </rule>
+  </pattern>
+
   <diagnostics>
     <diagnostic id="enm-1">Ref-number: 18
     Content: Value is "<value-of select="." />"</diagnostic>
@@ -433,6 +449,8 @@ Content: encodinganalog value is '<value-of select="./@encodinganalog" />', loca
     <diagnostic id="nested-list-2">Ref-number: 20.2</diagnostic>
     <diagnostic id="langcodem-1">Ref-number: 42
 Content: langcode value is '<value-of select="./@langcode" />', value must be a valid iso639-2 language code per https://www.loc.gov/standards/iso639-2/php/code_list.php.</diagnostic>
+    <diagnostic id="decap-1">Ref-number: 9002</diagnostic>
+    <diagnostic id="kheel-titleproper-date-1">Ref-number: 9003</diagnostic>
   </diagnostics>
 
 </schema>

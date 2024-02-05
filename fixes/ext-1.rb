@@ -63,7 +63,7 @@ def Fixes.parse_extent(extent)
     end
     stripped.sub!(/[\s.,):;]+\z/, '')                 # Trailing punc
 
-    count = (m = stripped.match(/^((?:(?:\d{1,3},?)+)?(?:\.\d+)?)\s+/)) && m[1]
+    count = (m = stripped.match(/^((?:\d{1,3},?)*(?:\.\d+)?)\s+/)) && m[1]
     throw :unparseable unless count
 
     count.gsub!(/,/, '') # Commas are bad practice
@@ -239,7 +239,6 @@ $VERBOSE = nil
   'videotape' => 'videotapes',
   'videotapes' => 'videotapes',
   'vol' => 'volumes',
-  'vols' => 'volumes',
   'vols' => 'volumes',
   'volume' => 'volumes',
   'volumes' => 'volumes',
