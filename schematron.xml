@@ -168,8 +168,8 @@
     </rule>
 
     <rule context="//*:titleproper" >
-      <!-- 'date' elements inside 'titleproper' elements -->    
-      <assert test="not(.//date)" diagnostics="kheel-titleproper-date-1">
+      <!-- 'date' elements inside 'titleproper' elements -->
+      <assert test="not(.//*:date)" diagnostics="kheel-titleproper-date-1">
         'titleproper' element must not contain 'date' element.
       </assert>
     </rule>
