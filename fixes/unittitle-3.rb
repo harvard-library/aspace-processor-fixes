@@ -5,6 +5,7 @@ fix_for 'unittitle-3', depends_on: ['noempty-1', 'noempty-2'] do
     # NOTE: Altered for Kheel to remove entirely and then strip trailing punct
     ut.xpath('.//unitdate').reverse.each do |ud|
       ut.add_next_sibling(ud.dup)
+      ud.content = ''
       ud.remove
       ut.content = ut.content.sub(/\s*[.,]*\s*$/, '')
     end
